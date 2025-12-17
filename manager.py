@@ -18,6 +18,16 @@ class ExpenseManager:
         #adds expense to the list
         self.expenses.append(new_expense)
 
+    #function get total price from the list
+    def get_total(self):
+        #total starts at 0
+        total = 0
+        #loops through expense in self.epxenses
+        for expense in self.expenses:
+            #adds the each expense price to the total
+            total += expense.price
+        return total
+
     #function saves it to a json and converts python data to json data.
     def save_to_file(self):
         #empty list
