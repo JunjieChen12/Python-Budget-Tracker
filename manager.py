@@ -65,3 +65,23 @@ class ExpenseManager:
         except FileNotFoundError:
             # If the file doesn't exist, we just start with an empty list.
             pass
+    
+    def save_to_file(self):
+        json_data = []
+        
+        # Loop through each expense object in your list
+        for expense in self.expenses:
+            
+            # 1. Translate Object -> Dictionary
+            temp_dict = {
+                "name": expense.name,
+                "price": expense.price,
+                "category": expense.category
+            }
+            
+            # 2. Add the simple dictionary to the list
+            json_data.append(temp_dict)
+            
+        # 3. Save the list to the file
+        with open("budget.json", "w") as file:
+            json.dump(json_data, file, indent=4)
